@@ -39,7 +39,7 @@ const Register = () => {
   }, [user, navigate, isSuccess, dispatch]);
   return (
     <div className="register-container">
-      <h1 className="text-header-center">Register </h1>
+      <h1 className="text-center">Register </h1>
       <div className="form-wrapper">
         <form action="" onSubmit={handleSubmit}>
           <div className="input-group">

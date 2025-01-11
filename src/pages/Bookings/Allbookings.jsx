@@ -41,7 +41,7 @@ const handleDelete = (id) => {
 
 
 return (
-    <div>
+    <div className="bookings-container">
         <h1 className="text-center">All Bookings</h1>
         <table>
             <thead>

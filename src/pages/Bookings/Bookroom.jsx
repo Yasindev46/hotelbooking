@@ -60,14 +60,14 @@ const Bookroom = () => {
     email,
     checkinDate,
     checkoutDate,
-    confirmed:false
+    confirmed:true
 }
     dispatch(createBooking(dataToSubmit))
   };
 
   return (
     <div className="bookroom-container">
-      <h1 className="text-header-center">Book Now</h1>
+      <h1 className="text-center">Book Now</h1>
       
       <div className="form-wrapper">
         <form action="" onSubmit={handleSubmit}>

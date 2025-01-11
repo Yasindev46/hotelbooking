@@ -41,12 +41,11 @@ const Room = () => {
   }, []);
   return (
     <div className="room-container">
-      <h1 className="text-header-center">Room</h1>
+      <h1 className="text-center">Room</h1>
       <div className="room-item">
         {room ? (
           <>
             {" "}
-            {/* <img src="/room.webp" alt="" className="img-center" /> */}
             <Carousel/>
             <h2 className="text-center">{room.name}</h2>
             <p>{room.desc}</p>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const Success = () => {
   return (
-    <div>
+    <div className='success-container'>
      <h2 className="text-header-center" >Room booked successfully.</h2>
     </div>
   );

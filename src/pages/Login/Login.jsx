@@ -35,7 +35,7 @@ const Login = () => {
     },[dispatch,isSuccess,user,navigate])
   return (
     <div className='login-container'>
-      <h1 className='text-header-center'>Login</h1>
+      <h1 className='text-center'>Login</h1>
       <div className='form-wrapper'>
         <form action="" onSubmit={handleSubmit}>
           <div className="input-group">

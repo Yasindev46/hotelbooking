@@ -55,7 +55,6 @@ const Editroom = () => {
           const { roomNumbers, ...rest } = data;
           const roomMap = roomNumbers.map((item) => item.number);
           const roomString = roomMap.join(",");
-          console.log("===>", roomString);
           setFromData({ ...rest, roomNumbers: roomString });
         }
       } catch (error) {
@@ -66,8 +65,8 @@ const Editroom = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-header-center">Edit room</h1>
+    <div className="room-container">
+      <h1 className="text-center">Edit room</h1>
       <div className="form-wrapper">
         <form action="" onSubmit={handleSubmit}>
           <div className="input-group">

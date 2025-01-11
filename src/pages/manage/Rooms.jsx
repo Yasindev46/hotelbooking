@@ -21,7 +21,7 @@ const Rooms = () => {
 
   return (
     <div className="rooms-container">
-      <h1 className="text-header-center">Rooms</h1>
+      <h1 className="text-center">Rooms</h1>
     <div className="rooms-content">
       {rooms.length > 0 &&
         rooms.map((item) => {

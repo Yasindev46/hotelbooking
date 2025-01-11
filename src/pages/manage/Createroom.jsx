@@ -39,7 +39,7 @@ const handleSubmit=async(e)=>{
 }
   return (
     <div className='create-container'>
-        <h1 className='text-header-center'>Create Room</h1>
+        <h1 className='text-center'>Create Room</h1>
         <div className='form-wrapper'>
         <form action="" onSubmit={handleSubmit}>
           <div className="input-group">
