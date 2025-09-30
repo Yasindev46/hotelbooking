@@ -23,10 +23,11 @@ const Rooms = () => {
     <div className="rooms-container">
       <h1 className="text-center">Rooms</h1>
     <div className="rooms-content">
-      {rooms.length > 0 &&
+      {rooms.length > 0 ?
         rooms.map((item) => {
           return <Roomlist item={item} />;
-        })}
+        }): 
+        <h3 className="text-center">No Rooms Found</h3>}
     </div>
     </div>
   );

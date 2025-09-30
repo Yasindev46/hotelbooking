@@ -19,7 +19,7 @@ const Createroom = () => {
     useEffect(() => {
       if (isSuccesss) {
         dispatch(reset())
-          navigate("/dashboard");
+          navigate("/rooms");
       }
     }, [isSuccesss,dispatch,navigate]);
 
