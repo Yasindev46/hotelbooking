@@ -43,7 +43,7 @@ export const loginUser=createAsyncThunk("auth/login",async(userData,thunkApi)=>{
         const data =await res.json();
         localStorage.setItem("user",JSON.stringify(data))
         return data;
-    } catch (error) {
+      } catch (error) {
         return thunkApi.rejectWithValue(error.message);
     }
 })
@@ -112,7 +112,7 @@ export const authSlice = createSlice({
       .addCase(loginUser.rejected,(state,action)=>{
         state.isError = true;
         state.isSuccess = false;
-        state.message = action.payload;
+        state.message = "Email or Password is incorrect";
       })
       .addCase(logoutUser.pending,(state,action)=>{
         state.isLoading=true
