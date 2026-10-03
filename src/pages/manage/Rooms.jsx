@@ -9,7 +9,7 @@ const Rooms = () => {
 
   useEffect(() => {
     dispatch(getallRooms());
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return (

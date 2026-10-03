@@ -15,7 +15,7 @@ const Dashboard = () => {
 
   useEffect(()=>{
     dispatch(getallBookings())
-  },[])
+  },[dispatch])
   return (
     <div>
       <h1 className='text-header-center'>Dashboard</h1>
