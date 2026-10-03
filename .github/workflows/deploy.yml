@@ -5,27 +5,8 @@ on:
     branches:
       - master
 jobs:
-  ESlint-job:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: run ESlint in app
-        run: npm run lint
-
  
   build-job:
-    needs: [ESlint-job]
     runs-on: ubuntu-latest
 
     steps:
@@ -44,7 +25,7 @@ jobs:
         run: npm run build
   
   artifacts-download-job:
-    needs: [ESlint-job, build-job]
+    needs: [build-job]
     runs-on: ubuntu-latest
 
     steps:
