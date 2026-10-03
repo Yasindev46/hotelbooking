@@ -17,10 +17,6 @@ const Carousel = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
-
   React.useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();

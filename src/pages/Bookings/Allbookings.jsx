@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {deleteBooking,reset} from "../../features/Bookings/bookingSlice";
-import { useNavigate } from "react-router-dom";
 
 const AllBookings = () => {
     const dispatch = useDispatch();

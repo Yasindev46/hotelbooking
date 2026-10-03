@@ -1,8 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getallRooms, reset } from "../../features/Room/roomSlice";
 import { Link } from "react-router-dom";
-import Room from "./Room";
 
 const Roomlist = ({ item }) => {
 

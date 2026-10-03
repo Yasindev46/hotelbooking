@@ -9,7 +9,6 @@ const Bookroom = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate()
 
-  const [room, setRoom] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -29,22 +28,6 @@ const Bookroom = () => {
         }, 1000);
     }
   },[isSuccess])
-  useEffect(() => {
-    const getRoom = async () => {
-      try {
-        const res = await fetch(`http://localhost:4040/api/rooms/${roomId}`);
-        if (!res.ok) {
-          return console.log("Error in getting room");
-        }
-        const data = res.json();
-        setRoom(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getRoom();
-  }, []);
-
   const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,

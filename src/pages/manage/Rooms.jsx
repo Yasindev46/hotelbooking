@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getallRooms, reset } from "../../features/Room/roomSlice";
+import { getallRooms } from "../../features/Room/roomSlice";
 import Roomlist from "./Roomlist";
 
 const Rooms = () => {
