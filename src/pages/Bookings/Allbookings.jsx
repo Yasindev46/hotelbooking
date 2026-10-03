@@ -32,7 +32,7 @@ const handleDelete = (id) => {
       dispatch(reset());
       getBookings();
     }
-  }, [isSuccess]);
+  }, [dispatch, isSuccess]);
 
   useEffect(() => {
     getBookings();

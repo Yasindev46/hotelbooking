@@ -62,7 +62,7 @@ const Editroom = () => {
       }
     };
     getRoom();
-  }, []);
+  }, [id]);
 
   return (
     <div className="room-container">

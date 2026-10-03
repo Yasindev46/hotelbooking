@@ -27,7 +27,7 @@ const Bookroom = () => {
             navigate("/rooms")  
         }, 1000);
     }
-  },[isSuccess])
+  },[isSuccess,dispatch,navigate])
   const handleChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,

@@ -22,7 +22,7 @@ const Room = () => {
       dispatch(reset());
       navigate("/rooms");
     }
-  }, [isSuccesss]);
+  }, [isSuccesss, dispatch, navigate]);
 
   useEffect(() => {
     const getRoom = async () => {
@@ -38,7 +38,7 @@ const Room = () => {
       }
     };
     getRoom();
-  }, []);
+  }, [id]);
   return (
     <div className="room-container">
       <h1 className="text-center">Room</h1>

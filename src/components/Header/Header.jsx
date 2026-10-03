@@ -7,12 +7,13 @@ import {logoutUser,reset} from "../../features/auth"
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
     const navigate = useNavigate();
-    const dispatch=useDispatch()
+    const dispatch = useDispatch()
+
     useEffect(() => {
       if (!user) {
         navigate("/login");
       }
-    }, [user]);
+    }, [user,navigate]);
 
 const handleLogout=async()=>{
 dispatch(logoutUser())

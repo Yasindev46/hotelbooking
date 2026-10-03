@@ -143,7 +143,7 @@ const initialState={
       .addCase(deleteRoom.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccesss = true;
-        state.rooms=state.rooms.filter((room)=>room._id!=action.payload.id);
+        state.rooms=state.rooms.filter((room)=>room._id!==action.payload.id);
       })
       .addCase(deleteRoom.rejected, (state, action) => {
         state.isError = true;
