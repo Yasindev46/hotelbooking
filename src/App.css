@@ -164,7 +164,7 @@ a {
 /* =========== */
 .home-bg {
   min-height: 50vh;
-  background: url('/public/images/image1.jpg') center/cover no-repeat;
+  background: url('../public/images/image1.jpg') center/cover no-repeat;
 }
 
 .home-overlay {

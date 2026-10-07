@@ -3,11 +3,11 @@ import './Carousel.css';
 
 
 const images = [
-  '/images/image1.jpg',
-  '/images/image2.jpeg',
-  '/images/image3.jpg',
-  '/images/image4.jpg',
-  '/images/image5.jpg'
+  `${process.env.PUBLIC_URL}/images/image1.jpg`,
+  `${process.env.PUBLIC_URL}/images/image2.jpeg`,
+  `${process.env.PUBLIC_URL}/images/image3.jpg`,
+  `${process.env.PUBLIC_URL}/images/image4.jpg`,
+  `${process.env.PUBLIC_URL}/images/image5.jpg`
 ];
 
 const Carousel = () => {
