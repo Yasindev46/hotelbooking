@@ -1,9 +1,10 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
+const apiUrl = process.env.REACT_APP_API_URL;
 export const createRoom=createAsyncThunk('rooms/create',async(roomData,thunkApi)=>{
 try {
     
-    const res = await fetch("http://localhost:4040/api/rooms", {
+    const res = await fetch(`${apiUrl}/rooms`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -24,7 +25,7 @@ try {
 
 export const getallRooms=createAsyncThunk('rooms/getall',async(__,thunkApi)=>{
 try {
-    const res = await fetch("http://localhost:4040/api/rooms")
+    const res = await fetch(`${apiUrl}/rooms`);
     const data=res.json()
     return data
 
@@ -38,7 +39,7 @@ export const updateRoom=createAsyncThunk('rooms/update',async(roomData,thunkApi)
   try {
       const {roomId,...rest}=roomData
 
-      const res = await fetch(`http://localhost:4040/api/rooms/${roomId}`, {
+      const res = await fetch(`${apiUrl}/rooms/${roomId}`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -60,7 +61,7 @@ export const updateRoom=createAsyncThunk('rooms/update',async(roomData,thunkApi)
   export const deleteRoom=createAsyncThunk('rooms/delete',async(roomId,thunkApi)=>{
     try {
   
-        const res = await fetch(`http://localhost:4040/api/rooms/${roomId}`, {
+        const res = await fetch(`${apiUrl}/rooms/${roomId}`, {
             method: "DELETE",
           });
           if (!res.ok) {

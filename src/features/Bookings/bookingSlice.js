@@ -10,10 +10,10 @@ const initialState={
 
 }
 
-
+const apiUrl = process.env.REACT_APP_API_URL;
 export const createBooking=createAsyncThunk('booking/create',async(bookingData,thunkApi)=>{
     try {
-        const res = await fetch("http://localhost:4040/api/bookings", {
+        const res = await fetch(`${apiUrl}/bookings`, {
             headers: {
               "Content-Type": "application/json",
             },
@@ -34,7 +34,7 @@ export const createBooking=createAsyncThunk('booking/create',async(bookingData,t
 
     export const getallBookings=createAsyncThunk('booking/getall',async(__,thunkApi)=>{
         try {
-            const res = await fetch("http://localhost:4040/api/bookings")
+            const res = await fetch(`${apiUrl}/bookings`)
             const data=res.json()
             return data
             
@@ -45,7 +45,7 @@ export const createBooking=createAsyncThunk('booking/create',async(bookingData,t
 
         export const deleteBooking = createAsyncThunk('booking/delete', async (bookingId, thunkApi) => {
           try {
-            const res = await fetch(`http://localhost:4040/api/bookings/${bookingId}`, {
+            const res = await fetch(`${apiUrl}/bookings/${bookingId}`, {
               method: "DELETE",
             });
             if (!res.ok) {
@@ -62,7 +62,7 @@ export const createBooking=createAsyncThunk('booking/create',async(bookingData,t
 
         export const updateBooking = createAsyncThunk('booking/update', async ({ bookingId, bookingData }, thunkApi) => {
           try {
-            const res = await fetch(`http://localhost:4040/api/bookings/${bookingId}`, {
+            const res = await fetch(`${apiUrl}/bookings/${bookingId}`, {
               headers: {
                 "Content-Type": "application/json",
               },

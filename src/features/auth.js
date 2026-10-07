@@ -1,12 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const user = JSON.parse(localStorage.getItem("user"));
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const registerUser = createAsyncThunk(
   "auth/register",
   async (userData, thunkApi) => {
     try {
-      const res = await fetch("http://localhost:4040/api/users", {
+      const res = await fetch(`${apiUrl}/users`, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -28,7 +29,7 @@ export const registerUser = createAsyncThunk(
 
 export const loginUser=createAsyncThunk("auth/login",async(userData,thunkApi)=>{
     try {
-        const res = await fetch("http://localhost:4040/api/users/login", {
+        const res = await fetch(`${apiUrl}/users/login`, {
           headers: {
             "Content-Type": "application/json",
           },
@@ -50,7 +51,7 @@ export const loginUser=createAsyncThunk("auth/login",async(userData,thunkApi)=>{
 
 export const logoutUser=createAsyncThunk("auth/logout",async(_,thunkApi)=>{
     try {
-        const res = await fetch("http://localhost:4040/users/logout");
+        const res = await fetch(`${apiUrl}/users/logout`);
         if (!res.ok) {
           const err = await res.json();
           return thunkApi.rejectWithValue(err);

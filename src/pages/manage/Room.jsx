@@ -24,10 +24,12 @@ const Room = () => {
     }
   }, [isSuccesss, dispatch, navigate]);
 
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   useEffect(() => {
     const getRoom = async () => {
       try {
-        const res = await fetch(`http://localhost:4040/api/rooms/${id}`);
+        const res = await fetch(`${apiUrl}/rooms/${id}`);
         if (res.ok) {
           const data = await res.json();
 

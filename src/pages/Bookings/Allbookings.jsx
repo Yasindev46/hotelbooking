@@ -8,10 +8,11 @@ const AllBookings = () => {
 
   const [allBooking, setAllBooking] = useState();
   const { isSuccess } = useSelector((state) => state.booking);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const getBookings = async () => {
     try {
-      const res = await fetch(`http://localhost:4040/api/bookings`);
+      const res = await fetch(`${apiUrl}/bookings`);
       if (res.ok) {
         const data = await res.json();
 
