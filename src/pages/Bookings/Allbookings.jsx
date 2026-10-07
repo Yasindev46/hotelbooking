@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {deleteBooking,reset} from "../../features/Bookings/bookingSlice";
 
@@ -10,7 +10,7 @@ const AllBookings = () => {
   const { isSuccess } = useSelector((state) => state.booking);
   const apiUrl = process.env.REACT_APP_API_URL;
 
-  const getBookings = async () => {
+  const getBookings = useCallback(async () => {
     try {
       const res = await fetch(`${apiUrl}/bookings`);
       if (res.ok) {
@@ -21,7 +21,7 @@ const AllBookings = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [apiUrl]);
 
 const handleDelete = (id) => {
     dispatch(deleteBooking(id));
@@ -33,7 +33,7 @@ const handleDelete = (id) => {
       dispatch(reset());
       getBookings();
     }
-  }, [dispatch, isSuccess]);
+  }, [dispatch, getBookings, isSuccess]);
 
   useEffect(() => {
     getBookings();
