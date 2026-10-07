@@ -33,11 +33,11 @@ const handleDelete = (id) => {
       dispatch(reset());
       getBookings();
     }
-  }, [dispatch, isSuccess]);
+  }, [dispatch, isSuccess,getBookings]);
 
   useEffect(() => {
     getBookings();
-  }, []);
+  }, [getBookings]);
 
 
 return (

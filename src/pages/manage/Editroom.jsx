@@ -64,7 +64,7 @@ const Editroom = () => {
       }
     };
     getRoom();
-  }, [id]);
+  }, [id,apiUrl]);
 
   return (
     <div className="room-container">

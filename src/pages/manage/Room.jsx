@@ -40,7 +40,7 @@ const Room = () => {
       }
     };
     getRoom();
-  }, [id]);
+  }, [id,apiUrl]);
   return (
     <div className="room-container">
       <h1 className="text-center">Room</h1>
