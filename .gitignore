@@ -21,6 +21,8 @@ dist/
 .env.*
 !.env.example
 !.env.sample
+# The frontend API URL is public and must be available to production builds.
+!.env.production
 
 # package manager / tool caches
 .npm/
