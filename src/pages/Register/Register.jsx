@@ -7,6 +7,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { user, isSuccess } = useSelector((state) => state.auth);
+  const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,6 +16,7 @@ const Register = () => {
 
   const { name, email, password } = formData;
   const handleChange = (e) => {
+    setErrorMessage("");
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
@@ -23,6 +25,10 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!name || !email || !password) {
+      setErrorMessage("Please fill in all fields.");
+      return;
+    }
     const datatoSubmit = {
       name,
       email,
@@ -51,6 +57,9 @@ const Register = () => {
               value={name}
               onChange={handleChange}
             />
+            {errorMessage && (
+              <p style={{ color: "red", fontSize: "14px" }}>Please enter name</p>
+            )}
           </div>
           <div className="input-group">
             <label htmlFor="name">Email</label>
@@ -61,6 +70,9 @@ const Register = () => {
               value={email}
               onChange={handleChange}
             />
+            {errorMessage && (
+              <p style={{ color: "red", fontSize: "14px" }}>Please enter email</p>
+            )}
           </div>
           <div className="input-group">
             <label htmlFor="name">Password</label>
@@ -71,6 +83,9 @@ const Register = () => {
               value={password}
               onChange={handleChange}
             />
+            {errorMessage && (
+              <p style={{ color: "red", fontSize: "14px" }}>Please enter password</p>
+            )}
           </div>
           <button type="submit">Submit</button>
         </form>

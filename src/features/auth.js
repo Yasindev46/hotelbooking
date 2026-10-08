@@ -49,21 +49,9 @@ export const loginUser=createAsyncThunk("auth/login",async(userData,thunkApi)=>{
     }
 })
 
-export const logoutUser=createAsyncThunk("auth/logout",async(_,thunkApi)=>{
-    try {
-        const res = await fetch(`${apiUrl}/users/logout`);
-        if (!res.ok) {
-          const err = await res.json();
-          return thunkApi.rejectWithValue(err);
-        }
-  
-        const data =await res.json();
-        localStorage.removeItem("user")
-        return data;
-    } catch (error) {
-        return thunkApi.rejectWithValue(error.message);
-    }
-})
+export const logoutUser = createAsyncThunk("auth/logout", async () => {
+  localStorage.removeItem("user");
+});
 
 const initialState = {
   user: user ? user : null,
@@ -93,7 +81,6 @@ export const authSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.user = action.payload;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isError = true;
@@ -116,18 +103,22 @@ export const authSlice = createSlice({
         state.message = "Email or Password is incorrect";
       })
       .addCase(logoutUser.pending,(state,action)=>{
-        state.isLoading=true
+        state.isLoading = true;
+        state.isError = false;
+        state.isSuccess = false;
+        state.message = "";
+        state.user = null;
       })
       .addCase(logoutUser.fulfilled,(state,action)=>{
-        state.isError=false
         state.isLoading = false;
-        state.isSuccess = true;
+        state.isError = false;
         state.user = null;
       })
       .addCase(logoutUser.rejected,(state,action)=>{
+        state.isLoading = false;
         state.isError = true;
-        state.isSuccess = false;
-        state.message = action.payload;
+        state.user = null;
+        state.message = action.error.message;
       })
   }
 });

@@ -43,13 +43,13 @@ const Room = () => {
   }, [id,apiUrl]);
   return (
     <div className="room-container">
-      <h1 className="text-center">Room</h1>
+      <h1 className="text-center"> {room ? room.name : "Room"}</h1>
       <div className="room-item">
         {room ? (
           <>
             {" "}
             <Carousel/>
-            <h2 className="text-center">{room.name}</h2>
+            {/* <h2 className="text-center">{room.name}</h2> */}
             <p>{room.desc}</p>
             <h3> Rs. {room.price.toFixed(2)}</h3>
             <Link to={`/bookings/${room._id}`}> <button>Book Now</button></Link>

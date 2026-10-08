@@ -1,13 +1,13 @@
 import React,{useEffect, useState} from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { loginUser,reset } from '../../features/auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const dispatch=useDispatch()
   const navigate=useNavigate()
-  const {user,isSuccess,message} =useSelector((state) => state.auth);
+  const {user,message,isLoading} =useSelector((state) => state.auth);
 
   const [formData,setFormData]=useState({
       email:"",
@@ -30,11 +30,11 @@ const Login = () => {
       dispatch(loginUser(datatoSubmit))
     }
     useEffect(()=>{
-      if(isSuccess){
-        navigate('/rooms')
+      if(user){
+        navigate('/', { replace: true })
         dispatch(reset())
       }
-    },[dispatch,isSuccess,user,navigate])
+    },[dispatch,user,navigate])
   return (
     <div className='login-container'>
       {message && (
@@ -45,7 +45,7 @@ const Login = () => {
           textAlign: "center",
           marginBottom: "15px",
           borderRadius: "5px"
-        }}>{console.log("message===>",message)}
+        }}>
           {message}
         </div>
       )}
@@ -56,10 +56,6 @@ const Login = () => {
             <label htmlFor="name">Email</label>
             <input type="text" placeholder='Enter your email' name='email' value={email} onChange={handleChange} />
           </div>
-          {/* <div className="input-group">
-            <label htmlFor="name">Password</label>
-            <input type="password" placeholder='Enter your password' name='password' value={password} onChange={handleChange} />
-          </div> */}
           <div className="input-group" style={{ position: "relative" }}>
             <label htmlFor="name">Password</label>
             <input
@@ -81,9 +77,13 @@ const Login = () => {
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
-          <button type='submit'>Login</button>
+          <button type='submit' disabled={isLoading}>
+            {isLoading ? 'Logging in...' : 'Login'}
+          </button>
         </form>
-
+        <p style={{ textAlign: "center" ,marginTop: "10px", }}>
+          Don't have an account? <Link to="/register" style={{ color: "blue", textDecoration: "none",fontWeight: "500" }}>Register</Link>
+        </p>
       </div>
     </div>
   );
